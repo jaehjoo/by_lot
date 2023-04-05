@@ -144,28 +144,13 @@ static int	arr_num(char **arr)
 	return (idx);
 }
 
-static int	search_coprime(long num)
-{
-	int prime[27] = {2, 3, 5, 7, 9, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101};
-
-	for (int idx = 0; idx < 27; idx++)
-	{
-		if (num % prime[idx] != 0)
-			return (prime[idx]);
-	}
-	return (0);
-}
-
 static void	draw_res(t_mlx *mlx)
 {
 	int				res;
-	int				coprime;
 	struct timeval	mytime;
 	int				width;
 
 	gettimeofday(&mytime, 0);
-	coprime = 0;
-	coprime = search_coprime(mytime.tv_sec);
 	res = (mytime.tv_sec) % (arr_num(mlx->name));
 	mlx_destroy_image(mlx->mlx, mlx->title.img);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->bg.img, 0, 0);
